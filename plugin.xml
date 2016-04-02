@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="siberian-plugin-previewer"
+        version="1.0.0">
+
+    <name>Previewer</name>
+    <description>Allow you to preview.</description>
+    <license>Siberian CMS</license>
+    <keywords>cordova,previewer</keywords>
+
+    <!-- ios -->
+    <platform name="ios">
+
+        <config-file target="*-Info.plist" parent="Previewer">
+            <dict>
+                <key>Url</key>
+                <dict>
+                    <key>url_key</key>
+                    <string></string>
+                    <key>url_domain</key>
+                    <string>localhost</string>
+                    <key>url_path</key>
+                    <string></string>
+                    <key>url_scheme</key>
+                    <string>http</string>
+                </dict>
+            </dict>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="UIMainStoryboardFile">
+            <string>Previewer</string>
+        </config-file>
+
+        <header-file target-dir="Previewer" src="src/ios/CDVAES256.h" />
+        <header-file target-dir="Previewer" src="src/ios/CDVCommon.h" />
+        <header-file target-dir="Previewer" src="src/ios/CDVLoaderView.h" />
+        <header-file target-dir="Previewer" src="src/ios/CDVRequest.h" />
+        <header-file target-dir="Previewer" src="src/ios/CDVUrl.h" />
+        <header-file target-dir="Previewer" src="src/ios/previewerInfoViewController.h" />
+        <header-file target-dir="Previewer" src="src/ios/previewerListingViewController.h" />
+        <header-file target-dir="Previewer" src="src/ios/previewerLoginViewController.h" />
+
+        <source-file target-dir="Previewer" src="src/ios/CDVAES256.m" />
+        <source-file target-dir="Previewer" src="src/ios/CDVCommon.m" />
+        <source-file target-dir="Previewer" src="src/ios/CDVLoaderView.m" />
+        <source-file target-dir="Previewer" src="src/ios/CDVRequest.m" />
+        <source-file target-dir="Previewer" src="src/ios/CDVUrl.m" />
+        <source-file target-dir="Previewer" src="src/ios/previewerInfoViewController.m" />
+        <source-file target-dir="Previewer" src="src/ios/previewerListingViewController.m" />
+        <source-file target-dir="Previewer" src="src/ios/previewerLoginViewController.m" />
+
+        <resource-file src="src/ios/customTableCell.xib" />
+        <resource-file src="src/ios/Previewer.storyboard" />
+        <resource-file src="src/ios/images/previewer_logo.png" />
+
+    </platform>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/values/ids.xml" parent="/*">
+            <item type="id" name="previewer" value="true" />
+        </config-file>
+
+        <config-file target="res/values/strings.xml" parent="/*">
+            <string name="back">Back</string>
+            <string name="log_in">Log in</string>
+            <string name="log_in_with">Log in with:</string>
+            <string name="another_one">Another one</string>
+            <string name="f_url">Url</string>
+            <string name="email">Email</string>
+            <string name="password">Password</string>
+            <string name="see_my_apps">See my apps</string>
+            <string name="login_error">Authentication failed. Please check your email and/or your password</string>
+            <string name="url_error">Authentication failed. Please check your url</string>
+            <string name="info">Info</string>
+            <string name="info_paragraph_1">{#-SB-INFO-TEXT-1-#}</string>
+            <string name="info_paragraph_2">{#-SB-INFO-TEXT-2-#}</string>
+            <string name="my_apps">My Apps</string>
+            <string name="url">http://localhost/overview</string>
+            <string name="load_message">Loading. Please wait ...</string>
+            <string name="load_message_app">The previewer app is getting your app. Please wait ...</string>
+            <string name="quit_message">Quit the application?</string>
+            <string name="done">Done</string>
+            <string name="yes">Yes</string>
+            <string name="no">No</string>
+            <string name="ok">Ok</string>
+            <string name="close_message">Do you want to go back to the apps list?</string>
+        </config-file>
+
+        <config-file target="res/values/colors.xml" parent="/*">
+            <color name="background_color">#000000</color>
+            <color name="text_color">#FFF600</color>
+            <color name="divider_color">#FFF600</color>
+            <color name="black_overlay">#ff000000</color>
+            <color name="blue_audioplayer">#3BB7E5</color>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity
+                    android:name="com.previewer.previewer.Login"
+                    android:configChanges="orientation|keyboardHidden|screenSize"
+                    android:label="@string/app_name"
+                    android:theme="@android:style/Theme.Holo.NoActionBar">
+                <intent-filter>
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+            </activity>
+            <activity
+                    android:name="com.previewer.previewer.AppsList"
+                    android:configChanges="orientation|keyboardHidden|screenSize"
+                    android:label="@string/app_name"
+                    android:theme="@android:style/Theme.Holo.NoActionBar">
+            </activity>
+            <activity
+                    android:name="com.previewer.previewer.ApplicationActivity"
+                    android:configChanges="orientation|keyboardHidden|screenSize"
+                    android:label="@string/app_name"
+                    android:theme="@android:style/Theme.Holo.NoActionBar">
+            </activity>
+        </config-file>
+
+        <!-- Framework -->
+        <framework src="com.squareup.picasso:picasso:2.5.2" />
+
+        <!-- Java files -->
+        <source-file src="src/android/ApplicationActivity.java" target-dir="src/com/previewer/previewer" />
+        <source-file src="src/android/AppsList.java" target-dir="src/com/previewer/previewer" />
+        <source-file src="src/android/LazyImageLoadAdapter.java" target-dir="src/com/previewer/previewer/utils" />
+
+        <!-- Resources -->
+        <source-file src="src/android/anim/slide_down.xml" target-dir="res/anim" />
+        <source-file src="src/android/anim/slide_in_left.xml" target-dir="res/anim" />
+        <source-file src="src/android/anim/slide_in_right.xml" target-dir="res/anim" />
+        <source-file src="src/android/anim/slide_out_left.xml" target-dir="res/anim" />
+        <source-file src="src/android/anim/slide_out_right.xml" target-dir="res/anim" />
+        <source-file src="src/android/anim/slide_up.xml" target-dir="res/anim" />
+
+        <source-file src="src/android/drawable/appiconstyles.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/buttonstyles.xml" target-dir="res/drawable" />
+        <source-file src="src/android/drawable/edittextstyles.xml" target-dir="res/drawable" />
+
+        <source-file src="src/android/drawable/logo.png" target-dir="res/drawable" />
+
+        <source-file src="src/android/layout/application.xml" target-dir="res/layout" />
+        <source-file src="src/android/layout/apps_list.xml" target-dir="res/layout" />
+        <source-file src="src/android/layout/list_row.xml" target-dir="res/layout" />
+        <source-file src="src/android/layout/login.xml" target-dir="res/layout" />
+
+        <source-file src="src/android/values/style.xml" target-dir="res/values" />
+
+    </platform>
+
+</plugin>
