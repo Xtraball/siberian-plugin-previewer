@@ -1,0 +1,11 @@
+{
+  "name": "siberian-plugin-previewer",
+  "version": "1.0",
+  "description": "Previewer App for Siberian",
+  "cordova": {
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  }
+}
