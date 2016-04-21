@@ -13,8 +13,10 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.appsmobilecompany.base.MainActivity;
 import com.previewer.previewer.utils.LazyImageLoadAdapter;
 
+import org.apache.cordova.engine.SystemWebViewClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,7 +25,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.appsmobilecompany.base.R;
-
 
 public class AppsList extends Activity {
 
@@ -104,10 +105,9 @@ public class AppsList extends Activity {
         pd_list = ProgressDialog.show(AppsList.this, "", AppsList.this.getString(R.string.load_message), true);
 
         try {
-            /** @previewer_new */
-            Intent intent = new Intent(AppsList.this, ApplicationActivity.class);
+            SystemWebViewClient.url_array = url.split("/");
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra("url", url);
             startActivity(intent);
 
         } catch (Exception e) {

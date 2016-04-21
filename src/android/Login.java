@@ -196,8 +196,8 @@ public class Login extends Activity {
 
                 pd = ProgressDialog.show(this, "", this.getApplicationContext().getString(R.string.load_message), true);
 
-                String url = null;
                 String email = input_email.getText().toString().trim();
+                String url = email;
                 String password = input_passwd.getText().toString();
                 String value = password;
 
@@ -229,7 +229,7 @@ public class Login extends Activity {
                     } else {
                         server_url = getString(R.string.url) + "/application/webservice_preview/login";
                     }
-                    String parameters = "email=" + email + "&password=" + password + "&ionic=1";
+                    String parameters = "email=" + email + "&password=" + password + "&version=ionic";
 
                     post(server_url, parameters);
 
