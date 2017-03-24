@@ -142,7 +142,7 @@
         <source-file src="src/android/layout/list_row.xml" target-dir="res/layout" />
         <source-file src="src/android/layout/login.xml" target-dir="res/layout" />
 
-        <source-file src="src/android/values/style.xml" target-dir="res/values" />
+        <!--source-file src="src/android/values/style.xml" target-dir="res/values" /-->
 
     </platform>
 
